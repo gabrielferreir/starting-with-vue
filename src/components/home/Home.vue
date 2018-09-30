@@ -10,14 +10,17 @@
 
     {{ filtro }}
     <div class="card">
-      <photo v-for="photo of photosFiltred"
-             :title="photo.titulo"
-             :photo="photo.url"
-      >
-
-        <div slot="legend">Pazuzu</div>
-        <div slot="date">29/09/2018</div>
-      </photo>
+      <div v-for="photo of photosFiltred">
+        <photo
+          :title="photo.titulo"
+          :photo="photo.url">
+          <div slot="legend">Pazuzu</div>
+          <div slot="date">29/09/2018</div>
+          <div slot="button">
+            <vue-button :type="'danger'" :title="'EXCLUIR'" :confirm="true" btstyle="danger" @action="remove(photo)"></vue-button>
+          </div>
+        </photo>
+      </div>
     </div>
 
   </section>
@@ -25,10 +28,12 @@
 
 <script>
   import Photo from "../shared/photo/Photo";
+  import Button from '../shared/button/Button';
 
   export default {
     components: {
-      'photo': Photo
+      'photo': Photo,
+      'vue-button': Button
     },
     data() {
       return {
@@ -54,6 +59,13 @@
         this.photos = res.body;
       })
     },
+    methods: {
+
+      remove(item) {
+        alert('Remove ' + item.titulo)
+      }
+
+    }
 
 
   }

@@ -16,6 +16,7 @@
         <div v-show="visibilit">
           <slot name="legend"></slot>
           <slot name="date"></slot>
+          <slot name="button"></slot>
         </div>
       </transition>
 
@@ -27,9 +28,11 @@
 <script>
   import ResponsivePhoto from '../responsive-photo/ResponsiveFoto'
 
+
   export default {
     components: {
-      'responsive-photo': ResponsivePhoto
+      'responsive-photo': ResponsivePhoto,
+
     },
     props: ['photo', 'title', 'status'],
     data() {
