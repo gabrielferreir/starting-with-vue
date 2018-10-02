@@ -13,11 +13,13 @@
       <div v-for="photo of photosFiltred">
         <photo
           :title="photo.titulo"
-          :photo="photo.url">
-          <div slot="legend">Pazuzu</div>
+          :photo="photo.url"
+          v-my-transform="15">
+          <div slot="legend" v-my-bold.red="800">Pazuzu</div>
           <div slot="date">29/09/2018</div>
           <div slot="button">
-            <vue-button :type="'danger'" :title="'EXCLUIR'" :confirm="true" btstyle="danger" @action="remove(photo)"></vue-button>
+            <vue-button :type="'danger'" :title="'EXCLUIR'" :confirm="true" btstyle="danger"
+                        @action="remove(photo)"></vue-button>
           </div>
         </photo>
       </div>
